@@ -32,8 +32,11 @@ body {
 }
 .btn {
     background-color: black;
-}
 
+}
+.btn-form{
+    width: 15em;
+}
 /* ABOUT */
 .buttons-about {
     display: flex;
@@ -45,3 +48,10 @@ body {
     width: 15em;
     height: 5em;
 }
+
+/*LEVEL*/
+.card-level {
+    display: flex;
+    justify-content: center;
+}
+
