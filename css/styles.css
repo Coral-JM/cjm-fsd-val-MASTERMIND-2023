@@ -49,9 +49,41 @@ body {
     height: 5em;
 }
 
+/*COLOR PICKING*/
+.btn-cp {
+    width: 10em;
+}
+
 /*LEVEL*/
 .card-level {
     display: flex;
     justify-content: center;
 }
+/*TABLE*/
 
+.tablero {
+    border: solid black 0.2em;
+}
+.colors-table {
+    background-color: grey;
+    height: 5em;
+    
+}
+.answer-table {
+    background-color: aquamarine;
+    height: 5em;
+    width: 5em;
+    border: solid black 0.2em;
+}
+.circle {
+    border-radius: 50%;
+    border: solid black 0.2em;
+    height: 2em;
+    width: 2em;
+
+}
+.circles1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
