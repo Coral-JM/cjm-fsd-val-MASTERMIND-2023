@@ -9,7 +9,7 @@ const saveJugador = () => {
     window.location.href = "../pages/winner.html";
         // if (jugador.length !== 0) {
         // sessionStorage.setItem("usuario", jugador);
-        // console.log("Nombre del jugador" + jugador);
+
         // window.location.href = "../pages/winner.html";
         // } else {
         //     alert("Introduce un nombre");
@@ -41,3 +41,6 @@ colorPicker("cp1", "circle1");
 colorPicker("cp2", "circle2");
 colorPicker("cp3", "circle3");
 colorPicker("cp4", "circle4");
+colorPicker("cp5", "circle5");
+colorPicker("cp6", "circle6");
+
