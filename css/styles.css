@@ -6,6 +6,8 @@
 
 body {
     background-color: black;
+    font-family: Impact;
+    margin: 1em;
 }
 
 /* PÁGINA PRINCIPAL */
@@ -47,13 +49,14 @@ body {
     font-family: Impact;
     width: 15em;
     height: 5em;
+    color: black;
 }
+
 
 /*COLOR PICKING*/
 .btn-cp {
     width: 10em;
 }
-
 input[type="color"] {
     width: 2em;
     height: 2em;
@@ -68,36 +71,54 @@ input[type="color"] {
     width: 2em;
     margin: 1em;
 }
+
+
 /*LEVEL*/
 .card-level {
     display: flex;
     justify-content: center;
 }
+
+
 /*TABLE*/
-
 .tablero {
-    border: solid black 0.2em;
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    width: 20em;
 }
-.colors-table {
-    background-color: grey;
-    height: 5em;
-    
-}
-.answer-table {
-    background-color: aquamarine;
-    height: 5em;
-    width: 5em;
-    border: solid black 0.2em;
-}
-.circle {
-    border-radius: 50%;
-    border: solid black 0.2em;
-    height: 2em;
-    width: 2em;
 
+.line {
+    border: solid black 0.1em;
+    border-radius: 1em;
 }
-.circles1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.dot1 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin: 0.1em;
+}
+.dotA {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+/*BUTTON CHECK*/
+.dot {
+    height: 3em;
+    width: 3em;
+}
+.check {
+    height: 3em;
+    width: 3em;
+}
+
+.secret {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin: 0.5em;
+}
+.answer {
+    width: 4em;
 }
