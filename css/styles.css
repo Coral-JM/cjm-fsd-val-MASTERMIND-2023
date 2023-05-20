@@ -6,10 +6,25 @@
 
 body {
     background-color: black;
-    font-family: Impact;
+    font-family: monospace;
     margin: 1em;
 }
 
+@font-face {
+    font-family: "Arcade";
+    src: url(../fonts/NormandyBeach3DItalic-lgGyD.otf) format('opentype');
+}
+@font-face {
+    font-family: "Arcade2";
+    src: url(../fonts/NormandyBeachSuperItalic-K7RmX.otf) format('opentype');
+}
+
+.tittle {
+    font-family: "Arcade";
+}
+.tittleblck {
+    font-family: "Arcade2";
+}
 /* PÁGINA PRINCIPAL */
 .circle-card {
     display: flex;
@@ -29,16 +44,19 @@ body {
 }
 .card {
     background-color: white;
-    font-family: Impact;
+    font-family: monospace;
     color: black;
 }
 .btn {
     background-color: black;
+    font-family: monospace;
 
 }
 .btn-form{
     width: 15em;
 }
+
+
 /* ABOUT */
 .buttons-about {
     display: flex;
@@ -46,7 +64,7 @@ body {
     align-items: center;
     background-color: white;
     margin: 2em;
-    font-family: Impact;
+    font-family: monospace;
     width: 15em;
     height: 5em;
     color: black;
@@ -56,7 +74,7 @@ body {
 .btn-player {
     width: 10em;
 }
-/*COLOR PICKING*/
+/*color picker*/
 .btn-cp {
     width: 10em;
 }
@@ -89,6 +107,7 @@ input[type="color"] {
     border-radius: 1em;
     padding: 1em;
     width: 20em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .line {
