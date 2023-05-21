@@ -1,7 +1,7 @@
-//GUARDADO DEL JUGADOR
+//EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
 let mensajeWinner = document.getElementById("enhorabuena");
 mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 
-//GUARDADO COMBINACIÓN SECRETA
-
-
+//EXPOSICIÓN COMBINACIÓN SECRETA 
+let combiSecreta = document.getElementById("secretcircle1");
+mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;

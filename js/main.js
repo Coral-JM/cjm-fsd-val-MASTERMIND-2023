@@ -41,12 +41,12 @@ function colorPicker(inputId, circleId, colorsArray) {
 
 let seleccionColores = [];
 
-//Guardado y converversión del string a array de los colores almacenados en el sessionStorage
-const storageColores = sessionStorage.getItem("almacenColores");
-    if (storageColores) {
-        almacenColores = JSON.parse(storageColores);
-        console.log("Colores convertidos del sessionStorage:", almacenColores);
-    }
+// //Guardado y converversión del string a array de los colores almacenados en el sessionStorage
+// const storageColores = sessionStorage.getItem("almacenColores");
+//     if (storageColores) {
+//         almacenColores = JSON.parse(storageColores);
+//         console.log("Colores convertidos del sessionStorage:", almacenColores);
+//     }
 
 
     
@@ -58,4 +58,48 @@ colorPicker("cp4", "circle4", seleccionColores);
 colorPicker("cp5", "circle5", seleccionColores);
 colorPicker("cp6", "circle6", seleccionColores);
 
+
+// GENERAR COMBINACIÓN SECRETA RANDOM de los arrays recogidos en el sessionStorage
+
+//Obtención de los Id's de la combinación secreta
+function randomColorsToSecretCircles(colorsArray) {
+    const secretCircles = [
+        document.getElementById("secretcircle1"),
+        document.getElementById("secretCircle2"),
+        document.getElementById("secretCircle3"),
+        document.getElementById("secretCircle4")
+
+    ];
+
+//Obtención de cuatro colores del colorsArray para los secretCircles 
+    const randomIndex = getRandomCombination(colorsArray.length, 4);
+
+        for (let i = 0; i < randomIndex.length; i++) {
+            const color = colorsArray[randomIndex[i]];
+            const secretCircle = secretCircles[i];
+            secretCircle.style.backgroundColor = color;
+        }
+}
+
+//Función para generar combinación random
+
+function getRandomCombination(maxIntervalo, cont) {
+    const index = [];
+        while (index.length < cont) {
+            const randomInterval = Math.floor(Math.random() * maxIntervalo);
+            if (!index.includes(randomInterval)) {
+                index.push(randomInterval);
+            }
+        }
+        return index;
+}
+
+//Guardado y converversión del string a array de los colores almacenados en el sessionStorage
+const storageColores = sessionStorage.getItem("almacenColores");
+    if (storageColores) {
+        almacenColores = JSON.parse(storageColores);
+        console.log("Colores convertidos del sessionStorage:", almacenColores);
+        randomColorsToSecretCircles(almacenColores);
+
+}
 
