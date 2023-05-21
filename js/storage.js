@@ -4,4 +4,4 @@ mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 
 //EXPOSICIÓN COMBINACIÓN SECRETA 
 let combiSecreta = document.getElementById("secretcircle1");
-mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
+

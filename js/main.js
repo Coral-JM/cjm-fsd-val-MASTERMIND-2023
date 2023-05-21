@@ -41,7 +41,7 @@ function colorPicker(inputId, circleId, colorsArray) {
 
 let seleccionColores = [];
 
-// //Guardado y converversión del string a array de los colores almacenados en el sessionStorage
+//Guardado y converversión del string a array de los colores almacenados en el sessionStorage
 // const storageColores = sessionStorage.getItem("almacenColores");
 //     if (storageColores) {
 //         almacenColores = JSON.parse(storageColores);
@@ -50,7 +50,7 @@ let seleccionColores = [];
 
 
     
-//String y arrays de los colores hexadecimales
+// String y arrays de los colores hexadecimales
 colorPicker("cp1", "circle1", seleccionColores);
 colorPicker("cp2", "circle2", seleccionColores);
 colorPicker("cp3", "circle3", seleccionColores);
@@ -61,7 +61,7 @@ colorPicker("cp6", "circle6", seleccionColores);
 
 // GENERAR COMBINACIÓN SECRETA RANDOM de los arrays recogidos en el sessionStorage
 
-//Obtención de los Id's de la combinación secreta
+// Obtención de los Id's de la combinación secreta
 function randomColorsToSecretCircles(colorsArray) {
     const secretCircles = [
         document.getElementById("secretcircle1"),
@@ -103,3 +103,17 @@ const storageColores = sessionStorage.getItem("almacenColores");
 
 }
 
+//CONVERSION DE ID SECRETCIRCLES EN UN SOLO ID ???¿¿¿
+// let id1 = document.getElementById("secretcircle1");
+// let id2 = document.getElementById("secretcircle2");
+// let id3 = document.getElementById("secretcircle3");
+// let id4 = document.getElementById("secretcircle4");
+
+// let idSecretCircles = id1.id + " " + id2.id + " " + id3.id + " " +id4.id;
+
+// id1.id = idSecretCircles;
+// id2.id.remove();
+// id3.id.remove();
+// id4.id.remove();
+
+// console.log("NUEVO ID",  idSecretCircles);
