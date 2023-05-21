@@ -2,5 +2,6 @@
 let mensajeWinner = document.getElementById("enhorabuena");
 mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 
+//GUARDADO COMBINACIÓN SECRETA
 
 

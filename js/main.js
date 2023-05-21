@@ -20,27 +20,42 @@ const saveJugador = () => {
 
 //COLORPICKER
 
-// La función colorPicker tiene dos parámetros (inputId y CircleId), éstos 
-// son los que recogen el valor del ID. 
-// Se declaran entonces las variables (colorInput y circle).
-// getElementById obtendrá los elementos del DOM (las variables) 
-// y las añade a los parámetros.
-// "colorInput" se refiere al elemento de entrada y "circle" 
-//se refiere al elemento de círculo correspondiente a los IDs proporcionados.
+// ColorPicker tiene dos parámetros (inputId y CircleId), éstos 
+// son los que recogen el valor del ID. Se declaran entonces las variables (colorInput y circle).
 
-
-function colorPicker(inputId, circleId) {
+function colorPicker(inputId, circleId, colorsArray) {
     let colorInput = document.getElementById(inputId);
     let circle = document.getElementById(circleId);
 
     colorInput.oninput = () => {
         circle.style.backgroundColor = colorInput.value;
+        console.log("Color seleccionado:", colorInput.value);
+        //Convertir en Array los colores seleccionados por el usuario
+        colorsArray.push(colorInput.value);
+        console.log("Colores almacenados:", colorsArray);
+        //Almacenaje de los colores del usuario en sessionStorage y convertidos en un string
+        sessionStorage.setItem("almacenColores", JSON.stringify(colorsArray));
+        console.log("Colores almacenados en sessionStorage: ", colorsArray);
     };
+}
+
+let seleccionColores = [];
+
+//Guardado y converversión del string a array de los colores almacenados en el sessionStorage
+const storageColores = sessionStorage.getItem("almacenColores");
+    if (storageColores) {
+        almacenColores = JSON.parse(storageColores);
+        console.log("Colores convertidos del sessionStorage:", almacenColores);
     }
-colorPicker("cp1", "circle1");
-colorPicker("cp2", "circle2");
-colorPicker("cp3", "circle3");
-colorPicker("cp4", "circle4");
-colorPicker("cp5", "circle5");
-colorPicker("cp6", "circle6");
+
+
+    
+//String y arrays de los colores hexadecimales
+colorPicker("cp1", "circle1", seleccionColores);
+colorPicker("cp2", "circle2", seleccionColores);
+colorPicker("cp3", "circle3", seleccionColores);
+colorPicker("cp4", "circle4", seleccionColores);
+colorPicker("cp5", "circle5", seleccionColores);
+colorPicker("cp6", "circle6", seleccionColores);
+
 
