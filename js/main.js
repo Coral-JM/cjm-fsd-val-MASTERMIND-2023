@@ -19,7 +19,7 @@ const saveJugador = () => {
 
 //COLOR PICKER
 
-//Pintado de los círculos por el usuario
+    //Pintado de los círculos por el usuario
 const colorPicker = (inputId, circleId) => {
     let colorInput = document.getElementById(inputId);
     let circle = document.getElementById(circleId);
@@ -35,21 +35,3 @@ colorPicker("cp3", "circle3");
 colorPicker("cp4", "circle4");
 colorPicker("cp5", "circle5");
 colorPicker("cp6", "circle6");
-
-
-//Almacenaje de los colores elegidos por el usuario
-const almacenajeColores = document.querySelector(".btn-cp");
-
-almacenajeColores.addEventListener("click", () => {
-    const circles = document.getElementsByClassName("circle-cp");
-    const seleccionColores = [];
-
-    Array.from(circles).forEach(circle => {
-        const color = circle.style.backgroundColor;
-        seleccionColores.push(color);
-    });
-
-    sessionStorage.setItem("seleccionColores", JSON.stringify(seleccionColores));
-
-    console.log(sessionStorage.getItem("seleccionColores"));
-});

@@ -119,6 +119,14 @@ input[type="color"] {
     height: 1em;
     border-radius: 50%;
 }
+.userColors {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    border: solid black;
+    margin: 0.5em;
+}
+
 /*BUTTON CHECK*/
 .dot {
     height: 3em;
@@ -132,6 +140,7 @@ input[type="color"] {
     width: 3em;
     height: 3em;
     border-radius: 50%;
+    border: solid black;
     margin: 0.5em;
 }
 .answer {
