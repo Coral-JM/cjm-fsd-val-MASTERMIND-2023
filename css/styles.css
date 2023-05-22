@@ -12,20 +12,12 @@ body {
 
 @font-face {
     font-family: "Arcade";
-    src: url(../fonts/NormandyBeach3DItalic-lgGyD.otf) format('opentype');
-}
-@font-face {
-    font-family: "Arcade2";
-    src: url(../fonts/NormandyBeachSuperItalic-K7RmX.otf) format('opentype');
+    src: url(../fonts/ka1.ttf) format('opentype');
 }
 
-.tittle {
+.tittle, .tittleblck {
     font-family: "Arcade";
 }
-.tittleblck {
-    font-family: "Arcade2";
-}
-
 
 /* PÁGINA PRINCIPAL */
 .circle-card {
