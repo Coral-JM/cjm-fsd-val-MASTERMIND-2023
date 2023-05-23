@@ -57,7 +57,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: white;
-    margin: 2em;
+    margin: 1em;
     font-family: monospace;
     width: 15em;
     height: 5em;
@@ -87,6 +87,9 @@ input[type="color"] {
     width: 2em;
     margin: 0.5em;
 }
+.btn-comenzar {
+    width: 10em;
+}
 
 
 /*LEVEL*/
@@ -113,20 +116,28 @@ input[type="color"] {
     height: 2em;
     border-radius: 50%;
     margin: 0.1em;
+    border: solid black;
 }
 .dotA {
     width: 1em;
     height: 1em;
     border-radius: 50%;
+    border: solid black;
 }
 .userColors {
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
-    border: solid black 0.15em;
+    /* border: solid black 0.15em; */
     margin: 0.5em;
 }
-
+.secret {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    border: solid black;
+    margin: 0.5em;
+}
 /*BUTTON CHECK*/
 .dot {
     height: 3em;
@@ -135,13 +146,6 @@ input[type="color"] {
 .check {
     height: 3em;
     width: 3em;
-}
-.secret {
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    border: solid black;
-    margin: 0.5em;
 }
 .answer {
     width: 4em;
