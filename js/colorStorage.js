@@ -62,61 +62,64 @@ if (recuperacionColores.length < 4) {
 }
 
 // TABLERO 
+window.addEventListener("load", () => rowsPerLevel());
 
-window.addEventListener("load", () => howManyRows());
 
-let tablero = document.getElementById("juego");
 
-const createRows = () => {
-// ESTRUCTURA ROW
-let rowDiv = document.createElement('div');
-rowDiv.className = 'row';
-let colDiv1 = document.createElement('div');
-colDiv1.className = 'col-10 p-2 line';
-let innerDiv1 = document.createElement('div');
-innerDiv1.className = 'd-flex align-items-center justify-content-center flex-wrap';
+// FILA TABLERO
 
-//DOTS GAME
-for (let i = 0; i < 4; i++) {
-    let dotDiv1 = document.createElement('div');
-    dotDiv1.className = 'dot1 m-1 bg-secondary';
-    innerDiv1.appendChild(dotDiv1);
-}
-// ESTRUCTURA DOTS ANSWER
-let answerDiv = document.createElement('div');
-answerDiv.className = 'd-flex flex-column align-items-center justify-content-center answer';
+document.addEventListener('DOMContentLoaded', function() {
+    let rowDiv = document.createElement('div');
+    rowDiv.className = 'row';
 
-let innerDotDiv = document.createElement('div');
-innerDotDiv.className = 'd-flex flex-wrap';
+    let colDiv = document.createElement('div');
+    colDiv.className = 'col-10 p-2 line';
+
+    let innerDiv = document.createElement('div');
+    innerDiv.className = 'd-flex align-items-center justify-content-center flex-wrap';
+
+//DOTS
+    for (let i = 0; i < 4; i++) {
+        let dotDiv1 = document.createElement('div');
+        dotDiv1.className = 'dot1';
+        innerDiv.appendChild(dotDiv1);
+    }
+
+    let answerDiv = document.createElement('div');
+    answerDiv.className = 'd-flex flex-column align-items-center justify-content-center answer';
 
 // DOTS ANSWER
-for (let j = 0; j < 4; j++) {
-    let dotDiv2 = document.createElement('div');
-    dotDiv2.className = 'dotA m-1 bg-secondary';
-    innerDotDiv.appendChild(dotDiv2);
-}
+    let innerAnswerDiv = document.createElement('div');
+    innerAnswerDiv.className = 'd-flex flex-wrap';
 
-answerDiv.appendChild(innerDotDiv);
-colDiv1.appendChild(innerDiv1);
-innerDiv1.appendChild(answerDiv);
+    for (let i = 0; i < 4; i++) {
+        let dotADiv = document.createElement('div');
+        dotADiv.className = 'dotA m-1';
+        innerAnswerDiv.appendChild(dotADiv);
+    }
 
+    answerDiv.appendChild(innerAnswerDiv);
+    innerDiv.appendChild(answerDiv);
+    colDiv.appendChild(innerDiv);
+    rowDiv.appendChild(colDiv);
 
-// CHECK ELEMENT
-let colDiv2 = document.createElement('div');
-colDiv2.className = 'col-2 p-1 mt-1';
-let checkDiv = document.createElement('div');
-checkDiv.className = 'check d-flex align-items-center justify-content-center';
+    let colDiv2 = document.createElement('div');
+    colDiv2.className = 'col-2 p-1 mt-1';
 
-let img = document.createElement('img');
-img.src = '../img/8665934_square_check_icon.png';
-img.className = 'dot';
+//BTN CHECK 
+    let checkDiv = document.createElement('div');
+    checkDiv.className = 'check d-flex align-items-center justify-content-center';
 
-checkDiv.appendChild(img);
-colDiv2.appendChild(checkDiv);
-rowDiv.appendChild(colDiv1);
-rowDiv.appendChild(colDiv2);
+    let img = document.createElement('img');
+    img.src = '../img/8665934_square_check_icon.png';
+    img.className = 'dot';
+    img.alt = '';
 
-// // Agrega "rowDiv" al body del documento
-// document.body.appendChild(rowDiv);
+    checkDiv.appendChild(img);
+    colDiv2.appendChild(checkDiv);
+    rowDiv.appendChild(colDiv2);
 
-}
+    let juegoDiv = document.getElementById('juego');
+    juegoDiv.appendChild(rowDiv);
+});
+

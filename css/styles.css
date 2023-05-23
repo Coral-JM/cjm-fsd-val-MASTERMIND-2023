@@ -105,24 +105,6 @@ input[type="color"] {
     border-radius: 1em;
     padding: 1em;
     width: 20em;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-.line {
-    border: solid black 0.1em;
-    border-radius: 1em;
-}
-.dot1 {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    margin: 0.1em;
-    border: solid black;
-}
-.dotA {
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: solid black;
 }
 .userColors {
     width: 1.5em;
@@ -137,6 +119,25 @@ input[type="color"] {
     border-radius: 50%;
     border: solid black;
     margin: 0.5em;
+}
+
+/**/
+.line {
+    border: solid black 0.1em;
+    border-radius: 1em;
+}
+.dot1 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: solid black;
+    margin: 0.2em;
+}
+.dotA {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: solid black;
 }
 /*BUTTON CHECK*/
 .dot {
