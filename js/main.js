@@ -35,3 +35,7 @@ colorPicker("cp3", "circle3");
 colorPicker("cp4", "circle4");
 colorPicker("cp5", "circle5");
 colorPicker("cp6", "circle6");
+
+// STORAGE COLORS/NIVEL
+
+//FÁCIL

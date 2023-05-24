@@ -47,7 +47,7 @@ const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"
 
     // Deben haber mínimo cuatro colores seleccionados
 if (recuperacionColores.length < 4) {
-    console.log("No hay suficientes colores almacenados.");
+    console.log("No hay suficientes colores almacenados");
 } else {
     // OBTENCIÓN DE COMBINACIÓN RANDOM
     const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
@@ -120,5 +120,93 @@ document.addEventListener('DOMContentLoaded', () => {
     let obtenerRows = createRow();
     juegoDiv.appendChild(obtenerRows);
 });
+
+
+// FUNCION SUMA ROW LEVEL FÁCIL 
+
+let contador = 1;
+
+const rowsFacil = () => {
+    const checkDivs = document.querySelectorAll('.check');
+    const lastCheckDiv = checkDivs[checkDivs.length - 1];
+    const lastImg = lastCheckDiv.querySelector('img');
+
+    if (contador <= 9 && lastImg && contador === checkDivs.length) {
+        lastImg.removeEventListener('click', rowsFacil);
+    
+        let juegoDiv = document.getElementById('juego');
+        let newRow = createRow();
+        juegoDiv.appendChild(newRow);
+    
+        contador++;
+    
+        let newCheckDiv = newRow.querySelector('.check');
+        let newImg = newCheckDiv.querySelector('img');
+        newImg.addEventListener('click', rowsFacil);
+
+        console.log('Clicks disponibles: ' + (11 - contador));
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    let img = document.querySelector('.check img');
+    img.addEventListener('click', rowsFacil);
+});
+
+
+// FUNCION SUMA ROW LEVEL INTERMEDIO
+
+// const rowsIntermedio = () => {
+//     const checkDivs = document.querySelectorAll('.check');
+//     const lastCheckDiv = checkDivs[checkDivs.length - 1];
+//     const lastImg = lastCheckDiv.querySelector('img');
+
+//     if (contador <= 7 && lastImg && contador === checkDivs.length) {
+//         lastImg.removeEventListener('click', rowsIntermedio);
+    
+//         let juegoDiv = document.getElementById('juego');
+//         let newRow = createRow();
+//         juegoDiv.appendChild(newRow);
+    
+//         contador++;
+    
+//         let newCheckDiv = newRow.querySelector('.check');
+//         let newImg = newCheckDiv.querySelector('img');
+//         newImg.addEventListener('click', rowsIntermedio);
+//     }
+// };
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     let img = document.querySelector('.check img');
+//     img.addEventListener('click', rowsIntermedio);
+// });
+
+
+// // FUNCION SUMA ROW LEVEL DIFÍCIL
+
+// const rowsDificil = () => {
+//     const checkDivs = document.querySelectorAll('.check');
+//     const lastCheckDiv = checkDivs[checkDivs.length - 1];
+//     const lastImg = lastCheckDiv.querySelector('img');
+
+//     if (contador <= 5 && lastImg && contador === checkDivs.length) {
+//         lastImg.removeEventListener('click', rowsDificil);
+    
+//         let juegoDiv = document.getElementById('juego');
+//         let newRow = createRow();
+//         juegoDiv.appendChild(newRow);
+    
+//         contador++;
+    
+//         let newCheckDiv = newRow.querySelector('.check');
+//         let newImg = newCheckDiv.querySelector('img');
+//         newImg.addEventListener('click', rowsDificil);
+//     }
+// };
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     let img = document.querySelector('.check img');
+//     img.addEventListener('click', rowsDificil);
+// });
 
 

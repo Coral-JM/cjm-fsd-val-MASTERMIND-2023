@@ -70,7 +70,7 @@ body {
     width: 10em;
 }
 /*color picker*/
-.btn-cp {
+.btn-cp, .nivelFacil, .nivelInter, .nivelDif {
     width: 10em;
 }
 input[type="color"] {
