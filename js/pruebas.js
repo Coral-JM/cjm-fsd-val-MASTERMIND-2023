@@ -109,3 +109,31 @@
 // // id4.id.remove();
 
 // // console.log("NUEVO ID",  idSecretCircles);
+
+
+
+
+//addeventlistener.click para que el boton de check haga la funcion de comprobacion
+
+
+// SELECCIÓN POR NIVEL
+
+// let seleccionNivel = sessionStorage.getItem("nivel");
+
+// const rowsPerLevel = () => {
+
+//     if (seleccionNivell == "level1") {
+//         for (let i = 0; i < 10; i++) {
+//             generarRows();
+//         }
+//     } else if (seleccionNivel == "level2") {
+//         for (let i = 0; i < 8; i++) {
+//             generarRows();
+//         }
+//     } else {
+//         for (let i = 0; i < 6; i++) {
+//             generarRows();
+//         }
+//     }
+// }
+

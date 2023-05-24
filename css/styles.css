@@ -121,7 +121,7 @@ input[type="color"] {
     margin: 0.5em;
 }
 
-/**/
+/*ROW*/
 .line {
     border: solid black 0.1em;
     border-radius: 1em;
@@ -139,6 +139,12 @@ input[type="color"] {
     border-radius: 50%;
     border: solid black;
 }
+
+.rowprincipal {
+    margin-left: 0.02em;
+    margin-bottom: 0.5em;
+}
+
 /*BUTTON CHECK*/
 .dot {
     height: 3em;
@@ -150,4 +156,7 @@ input[type="color"] {
 }
 .answer {
     width: 4em;
+}
+img {
+    cursor: pointer;
 }

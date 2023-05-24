@@ -41,8 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-
 //OBTENCIÓN DE COMBINACIÓN RANDOM SECRETA
 
 const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -61,24 +59,22 @@ if (recuperacionColores.length < 4) {
     });
 }
 
-// TABLERO 
-window.addEventListener("load", () => rowsPerLevel());
+///////////////////////////////////////////////////////////////////////////////
 
 
+// TABLERO
 
-// FILA TABLERO
+// FILA PRINCIPAL TABLERO
 
-document.addEventListener('DOMContentLoaded', function() {
+createRow = () => {
     let rowDiv = document.createElement('div');
-    rowDiv.className = 'row';
-
+    rowDiv.className = 'row rowprincipal';
     let colDiv = document.createElement('div');
     colDiv.className = 'col-10 p-2 line';
-
     let innerDiv = document.createElement('div');
     innerDiv.className = 'd-flex align-items-center justify-content-center flex-wrap';
 
-//DOTS
+    // DOTS
     for (let i = 0; i < 4; i++) {
         let dotDiv1 = document.createElement('div');
         dotDiv1.className = 'dot1';
@@ -88,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let answerDiv = document.createElement('div');
     answerDiv.className = 'd-flex flex-column align-items-center justify-content-center answer';
 
-// DOTS ANSWER
+    // DOTS ANSWER
     let innerAnswerDiv = document.createElement('div');
     innerAnswerDiv.className = 'd-flex flex-wrap';
 
@@ -103,23 +99,26 @@ document.addEventListener('DOMContentLoaded', function() {
     colDiv.appendChild(innerDiv);
     rowDiv.appendChild(colDiv);
 
+    // BTN CHECK
     let colDiv2 = document.createElement('div');
     colDiv2.className = 'col-2 p-1 mt-1';
-
-//BTN CHECK 
     let checkDiv = document.createElement('div');
     checkDiv.className = 'check d-flex align-items-center justify-content-center';
-
     let img = document.createElement('img');
     img.src = '../img/8665934_square_check_icon.png';
     img.className = 'dot';
-    img.alt = '';
 
     checkDiv.appendChild(img);
     colDiv2.appendChild(checkDiv);
     rowDiv.appendChild(colDiv2);
 
+    return rowDiv;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
     let juegoDiv = document.getElementById('juego');
-    juegoDiv.appendChild(rowDiv);
+    let obtenerRows = createRow();
+    juegoDiv.appendChild(obtenerRows);
 });
+
 
