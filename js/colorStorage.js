@@ -167,7 +167,7 @@ const pintarDot1 = () => {
         Array.from(dots).forEach((dot) => {
         let currentIndex = 0;
         dot.addEventListener('click', () => {
-            const nextColorIndex = (currentIndex + 1) % coloresGuardados.length;
+            let nextColorIndex = (currentIndex + 1) % coloresGuardados.length;
             dot.style.backgroundColor = coloresGuardados[nextColorIndex] || "transparent";
             currentIndex = nextColorIndex;
         });
