@@ -9,13 +9,13 @@ const almacenarColores = () => {
         seleccionColores.push(color);
     });
 
-sessionStorage.setItem("seleccionColores", JSON.stringify(seleccionColores));
+    sessionStorage.setItem("seleccionColores", JSON.stringify(seleccionColores));
 
-console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
+    console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
 };
 
     //Carga los elementos una vez abierta la página
-window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("DOMContentLoaded", () => {
     //Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
 const botonComenzar = document.querySelector(".btn-cp");
 
@@ -29,7 +29,7 @@ const botonComenzar = document.querySelector(".btn-cp");
 
 const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const circles = document.querySelectorAll(".userColors");
 
     if (sessionStorage.getItem("seleccionColores")) {
@@ -46,52 +46,51 @@ document.addEventListener("DOMContentLoaded", () => {
 const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
     // Deben haber mínimo cuatro colores seleccionados
-if (recuperacionColores.length < 4) {
-    console.log("No hay suficientes colores almacenados");
-} else {
-    // OBTENCIÓN DE COMBINACIÓN RANDOM
-    const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
+    if (recuperacionColores.length < 4) {
+        console.log("No hay suficientes colores almacenados");
+    } else {
+        // OBTENCIÓN DE COMBINACIÓN RANDOM
+        const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
 
-    // Pintar los círculos con los colores seleccionados
-    const secretCircles = document.getElementsByClassName("secret");
-        Array.from(secretCircles).forEach((circle, index) => {
-        circle.style.backgroundColor = mezclarColores[index];
-    });
+        // Pintar los círculos con los colores seleccionados
+        const secretCircles = document.getElementsByClassName("secret");
+            Array.from(secretCircles).forEach((circle, index) => {
+            circle.style.backgroundColor = mezclarColores[index];
+        });
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 // TABLERO
 
 // FILA PRINCIPAL TABLERO
 
 createRow = () => {
-    let rowDiv = document.createElement('div');
+let rowDiv = document.createElement('div');
     rowDiv.className = 'row rowprincipal';
-    let colDiv = document.createElement('div');
+let colDiv = document.createElement('div');
     colDiv.className = 'col-10 p-2 line';
-    let innerDiv = document.createElement('div');
+let innerDiv = document.createElement('div');
     innerDiv.className = 'd-flex align-items-center justify-content-center flex-wrap';
 
     // DOTS
     for (let i = 0; i < 4; i++) {
         let dotDiv1 = document.createElement('div');
-        dotDiv1.className = 'dot1';
-        innerDiv.appendChild(dotDiv1);
+            dotDiv1.className = 'dot1';
+            innerDiv.appendChild(dotDiv1);
     }
 
-    let answerDiv = document.createElement('div');
+let answerDiv = document.createElement('div');
     answerDiv.className = 'd-flex flex-column align-items-center justify-content-center answer';
 
     // DOTS ANSWER
-    let innerAnswerDiv = document.createElement('div');
+let innerAnswerDiv = document.createElement('div');
     innerAnswerDiv.className = 'd-flex flex-wrap';
 
     for (let i = 0; i < 4; i++) {
         let dotADiv = document.createElement('div');
-        dotADiv.className = 'dotA m-1';
-        innerAnswerDiv.appendChild(dotADiv);
+            dotADiv.className = 'dotA m-1';
+            innerAnswerDiv.appendChild(dotADiv);
     }
 
     answerDiv.appendChild(innerAnswerDiv);
@@ -100,11 +99,11 @@ createRow = () => {
     rowDiv.appendChild(colDiv);
 
     // BTN CHECK
-    let colDiv2 = document.createElement('div');
+let colDiv2 = document.createElement('div');
     colDiv2.className = 'col-2 p-1 mt-1';
-    let checkDiv = document.createElement('div');
+let checkDiv = document.createElement('div');
     checkDiv.className = 'check d-flex align-items-center justify-content-center';
-    let img = document.createElement('img');
+let img = document.createElement('img');
     img.src = '../img/8665934_square_check_icon.png';
     img.className = 'dot';
 
@@ -118,95 +117,45 @@ createRow = () => {
 document.addEventListener('DOMContentLoaded', () => {
     let juegoDiv = document.getElementById('juego');
     let obtenerRows = createRow();
-    juegoDiv.appendChild(obtenerRows);
+        juegoDiv.appendChild(obtenerRows);
 });
 
+///////////////////////////////////////////////////////////////////////////////
 
-// FUNCION SUMA ROW LEVEL FÁCIL 
+//FUNCIÓN SUMA DE FILAS POR NIVEL
 
 let contador = 1;
 
-const rowsFacil = () => {
+const rows = () => {
+
     const checkDivs = document.querySelectorAll('.check');
     const lastCheckDiv = checkDivs[checkDivs.length - 1];
     const lastImg = lastCheckDiv.querySelector('img');
 
-    if (contador <= 9 && lastImg && contador === checkDivs.length) {
-        lastImg.removeEventListener('click', rowsFacil);
+    if (contador < nivel && lastImg && contador === checkDivs.length) {
+        lastImg.removeEventListener('click', rows);
     
         let juegoDiv = document.getElementById('juego');
         let newRow = createRow();
-        juegoDiv.appendChild(newRow);
+            juegoDiv.appendChild(newRow);
     
         contador++;
     
         let newCheckDiv = newRow.querySelector('.check');
         let newImg = newCheckDiv.querySelector('img');
-        newImg.addEventListener('click', rowsFacil);
+            newImg.addEventListener('click', rows);
 
-        console.log('Clicks disponibles: ' + (11 - contador));
+        console.log('Clicks disponibles: ' + (nivel - contador));
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     let img = document.querySelector('.check img');
-    img.addEventListener('click', rowsFacil);
+        img.addEventListener('click', rows);
 });
 
 
-// FUNCION SUMA ROW LEVEL INTERMEDIO
-
-// const rowsIntermedio = () => {
-//     const checkDivs = document.querySelectorAll('.check');
-//     const lastCheckDiv = checkDivs[checkDivs.length - 1];
-//     const lastImg = lastCheckDiv.querySelector('img');
-
-//     if (contador <= 7 && lastImg && contador === checkDivs.length) {
-//         lastImg.removeEventListener('click', rowsIntermedio);
-    
-//         let juegoDiv = document.getElementById('juego');
-//         let newRow = createRow();
-//         juegoDiv.appendChild(newRow);
-    
-//         contador++;
-    
-//         let newCheckDiv = newRow.querySelector('.check');
-//         let newImg = newCheckDiv.querySelector('img');
-//         newImg.addEventListener('click', rowsIntermedio);
-//     }
-// };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     let img = document.querySelector('.check img');
-//     img.addEventListener('click', rowsIntermedio);
-// });
-
-
-// // FUNCION SUMA ROW LEVEL DIFÍCIL
-
-// const rowsDificil = () => {
-//     const checkDivs = document.querySelectorAll('.check');
-//     const lastCheckDiv = checkDivs[checkDivs.length - 1];
-//     const lastImg = lastCheckDiv.querySelector('img');
-
-//     if (contador <= 5 && lastImg && contador === checkDivs.length) {
-//         lastImg.removeEventListener('click', rowsDificil);
-    
-//         let juegoDiv = document.getElementById('juego');
-//         let newRow = createRow();
-//         juegoDiv.appendChild(newRow);
-    
-//         contador++;
-    
-//         let newCheckDiv = newRow.querySelector('.check');
-//         let newImg = newCheckDiv.querySelector('img');
-//         newImg.addEventListener('click', rowsDificil);
-//     }
-// };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     let img = document.querySelector('.check img');
-//     img.addEventListener('click', rowsDificil);
-// });
-
+//EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
+let mensajeWinner = document.getElementById("enhorabuena");
+mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 

@@ -1,3 +1,23 @@
+//SESSION STORAGE NIVEL
+const saveFacil = () => {
+    sessionStorage.setItem("level", 10);
+    window.location.href = "../pages/colorsL1.html";
+}
+
+const saveInter = () => {
+    sessionStorage.setItem("level", 8);
+    window.location.href = "../pages/colorsL2.html";
+}
+
+const saveDif = () => {
+    sessionStorage.setItem("level", 6);
+    window.location.href = "../pages/colorsL3.html";
+}
+
+//TRAER NIVELES
+let nivel = sessionStorage.getItem("level");
+console.log("nivelFacil vale...", nivel)
+
 
 //STORAGE JUGADOR
 
@@ -7,6 +27,8 @@ const saveJugador = () => {
 
     sessionStorage.setItem("usuario", jugador);
     window.location.href = "../pages/winner.html";
+
+    
         // if (jugador.length !== 0) {
         // sessionStorage.setItem("usuario", jugador);
 
@@ -15,7 +37,6 @@ const saveJugador = () => {
         //     alert("Introduce un nombre");
         // }
 }
-
 
 //COLOR PICKER
 
@@ -35,7 +56,3 @@ colorPicker("cp3", "circle3");
 colorPicker("cp4", "circle4");
 colorPicker("cp5", "circle5");
 colorPicker("cp6", "circle6");
-
-// STORAGE COLORS/NIVEL
-
-//FÁCIL
