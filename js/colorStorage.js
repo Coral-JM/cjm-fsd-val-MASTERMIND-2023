@@ -14,9 +14,9 @@ const almacenarColores = () => {
     console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
 };
 
-    //Carga los elementos una vez abierta la página
-    window.addEventListener("DOMContentLoaded", () => {
-    //Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
+//Carga los elementos una vez abierta la página
+window.addEventListener("DOMContentLoaded", () => {
+//Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
 const botonComenzar = document.querySelector(".btn-cp");
 
     //Evento de click al botón para almacenar los colores
@@ -31,7 +31,7 @@ const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
     document.addEventListener("DOMContentLoaded", () => {
     const circles = document.querySelectorAll(".userColors");
-
+        console.log(coloresGuardados);
     if (sessionStorage.getItem("seleccionColores")) {
         const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
         
@@ -71,13 +71,14 @@ let rowDiv = document.createElement('div');
 let colDiv = document.createElement('div');
     colDiv.className = 'col-10 p-2 line';
 let innerDiv = document.createElement('div');
-    innerDiv.className = 'd-flex align-items-center justify-content-center flex-wrap';
+    innerDiv.className = 'rowDots d-flex align-items-center justify-content-center flex-wrap';
 
     // DOTS
     for (let i = 0; i < 4; i++) {
         let dotDiv1 = document.createElement('div');
             dotDiv1.className = 'dot1';
             innerDiv.appendChild(dotDiv1);
+            dotDiv1.id = 'dot1';
     }
 
 let answerDiv = document.createElement('div');
@@ -128,9 +129,9 @@ let contador = 1;
 
 const rows = () => {
 
-    const checkDivs = document.querySelectorAll('.check');
-    const lastCheckDiv = checkDivs[checkDivs.length - 1];
-    const lastImg = lastCheckDiv.querySelector('img');
+    let checkDivs = document.querySelectorAll('.check');
+    let lastCheckDiv = checkDivs[checkDivs.length - 1];
+    let lastImg = lastCheckDiv.querySelector('img');
 
     if (contador < nivel && lastImg && contador === checkDivs.length) {
         lastImg.removeEventListener('click', rows);
@@ -146,6 +147,8 @@ const rows = () => {
             newImg.addEventListener('click', rows);
 
         console.log('Clicks disponibles: ' + (nivel - contador));
+    
+    pintarDot1();
     }
 };
 
@@ -154,8 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
         img.addEventListener('click', rows);
 });
 
+// PINTAR LOS DOTS DEL JUEGO CON LOS COLORES DEL ARRAY
 
-//EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
+const pintarDot1 = () => {
+    let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
+    let dots = document.getElementsByClassName('dot1');
+
+    if (coloresGuardados && coloresGuardados.length > 0) {
+        Array.from(dots).forEach((dot) => {
+        let currentIndex = 0;
+        dot.addEventListener('click', () => {
+            const nextColorIndex = (currentIndex + 1) % coloresGuardados.length;
+            dot.style.backgroundColor = coloresGuardados[nextColorIndex] || "transparent";
+            currentIndex = nextColorIndex;
+        });
+    });
+    }
+};
+
+document.addEventListener("DOMContentLoaded", pintarDot1);
+
+
+
+// EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
 let mensajeWinner = document.getElementById("enhorabuena");
 mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
-
