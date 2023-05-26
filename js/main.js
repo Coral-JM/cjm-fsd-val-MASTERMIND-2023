@@ -150,9 +150,9 @@ const compareColours = (coloresArray) => {
           } else {
             console.log("");
           }
-
         })
       };
+      
     }
 
 
@@ -184,7 +184,7 @@ const rows = () => {
       
             pintarDot1();
         }
-
+    }
 
 document.addEventListener('DOMContentLoaded', () => {
     let img = document.querySelector('.check img');
