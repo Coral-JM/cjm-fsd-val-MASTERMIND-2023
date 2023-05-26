@@ -46,7 +46,6 @@ let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
 //OBTENCIÓN DE COMBINACIÓN RANDOM SECRETA
 
-
 const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"));
 const coloresFinales = [];
 // Deben haber mínimo cuatro colores seleccionados
@@ -71,10 +70,6 @@ const coloresFinales = [];
 ///////////////////////////////////////////////////////////////////////////////
 
 // TABLERO
-
-
-
-
 
 
 // FILA PRINCIPAL TABLERO
@@ -137,16 +132,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+//COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
+const compareColours = (coloresArray) => {
+    
+    console.log("estoy aqui");
+    console.log(coloresArray);
+    if (coloresArray.length <= 4) {
+      console.log("entra");
 
+      coloresArray.forEach((element, index) => {
+
+          if (element === coloresFinales[index]) {
+            console.log("rgb(255, 0, 0)");
+          } else if (coloresFinales.includes(element)) {
+            console.log("rgb(0, 0, 0)");
+          } else {
+            console.log("");
+          }
+
+        })
+      };
+    }
 
 
 //FUNCIÓN SUMA DE FILAS POR NIVEL
 
 let contador = 1;
 
-const rows = () => {
 
+const rows = () => {
+    
     let checkDivs = document.querySelectorAll('.check');
     let lastCheckDiv = checkDivs[checkDivs.length - 1];
     let lastImg = lastCheckDiv.querySelector('img');
@@ -154,21 +170,21 @@ const rows = () => {
     if (contador < nivel && lastImg && contador === checkDivs.length) {
         lastImg.removeEventListener('click', rows);
     
-        let juegoDiv = document.getElementById('juego');
-        let newRow = createRow();
+            let juegoDiv = document.getElementById('juego');
+            let newRow = createRow();
             juegoDiv.appendChild(newRow);
-    
-        contador++;
-    
-        let newCheckDiv = newRow.querySelector('.check');
-        let newImg = newCheckDiv.querySelector('img');
+      
+            contador++;
+      
+            let newCheckDiv = newRow.querySelector('.check');
+            let newImg = newCheckDiv.querySelector('img');
             newImg.addEventListener('click', rows);
+      
+            console.log('Clicks disponibles: ' + (nivel - contador));
+      
+            pintarDot1();
+        }
 
-        console.log('Clicks disponibles: ' + (nivel - contador));
-        
-    pintarDot1();
-    }
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     let img = document.querySelector('.check img');
@@ -176,12 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
-// PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
+ //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
 
 const pintarDot1 = () => {
     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -198,22 +209,16 @@ const pintarDot1 = () => {
             });
         });
     }
-    arrayColoresDots();
-    
-
 };
 document.addEventListener("DOMContentLoaded", pintarDot1);
-
-
-
-
 
 
 // ARRAY DE LOS COLORES DE LOS DOTS
 
 const arrayColoresDots = () => {
-    coloresGuardados = [];
     const dots = document.getElementsByClassName('dot1');
+
+    let coloresArray = [];
 
     let hayColor = false;
 
@@ -221,36 +226,22 @@ const arrayColoresDots = () => {
         const backgroundColor = dot.style.backgroundColor;
         if (backgroundColor !== '') {
             hayColor = true;
-            coloresGuardados.push(backgroundColor);
+            coloresArray.push(backgroundColor);
         }
     });
 
     if (hayColor) {
-        console.log(coloresGuardados);
+        console.log(coloresArray);
+        compareColours(coloresArray); 
     } else {
         console.log('No hay dots con color.');
     }
 };
+document.addEventListener('DOMContentLoaded', () => {
+    let img = document.querySelector('.check img');
+    img.addEventListener('click', arrayColoresDots); 
+  });
 
-//COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
-
-///////////////////SOCORROOOOOOO//////////////////////////
-const compareColours = () => {
-
-    if (coloresGuardados.length >= 4){
-        const compareArrays = coloresGuardados.map((element, index) => {
-            console.log(compareArrays = coloresGuardados.map((element, index)));
-            if (element === coloresFinales[index]) {
-                return "rgb(255, 0, 0)";
-            } else if (coloresFinales.includes(element)){
-                return "rgb(0, 0, 0)";
-            } else {
-                return "";
-            }
-        });
-    } 
-}
-document.addEventListener("DOMContentLoaded", compareColours);
 
 // //PINTAR LOS DOTS ANSWER 
 // const pintarDotA = () => {
@@ -263,16 +254,7 @@ document.addEventListener("DOMContentLoaded", compareColours);
 // }
 // document.addEventListener("DOMContentLoaded", pintarDotA);
 
-//PINTAR LOS DOTS ANSWER 
-// const pintarDotA = () => {
 
-//     for (let i = 0; i < 4; i++) {
-//         let paintDotA = document.getElementsByClassName('dotA');
-//         let paintAnswer = compareArrays[i];
-//         paintDotA.style.backgroundColor = paintAnswer;
-//     }
-// }
-// document.addEventListener("DOMContentLoaded", pintarDotA);
   
 
 // EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
@@ -280,3 +262,4 @@ document.addEventListener("DOMContentLoaded", compareColours);
 // let mensajeWinner = document.getElementById("enhorabuena");
 // mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 
+  
