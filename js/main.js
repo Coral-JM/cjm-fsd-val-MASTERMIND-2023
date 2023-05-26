@@ -1,4 +1,6 @@
 
+
+
 // ALMACENAJE DE LOS COLORES DEL USUARIO
 const almacenarColores = () => {
     const circles = document.getElementsByClassName("circle-cp");
@@ -31,7 +33,7 @@ const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
     document.addEventListener("DOMContentLoaded", () => {
     const circles = document.querySelectorAll(".userColors");
-        console.log(coloresGuardados);
+        // console.log(coloresGuardados);
     if (sessionStorage.getItem("seleccionColores")) {
         const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
         
@@ -45,20 +47,24 @@ const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
 const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
-    // Deben haber mínimo cuatro colores seleccionados
-    if (recuperacionColores.length < 4) {
-        console.log("No hay suficientes colores almacenados");
-    } else {
-        // OBTENCIÓN DE COMBINACIÓN RANDOM
-        const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
+// Deben haber mínimo cuatro colores seleccionados
+if (recuperacionColores.length < 4) {
+    console.log("No hay suficientes colores almacenados");
+} else {
+    // OBTENCIÓN DE COMBINACIÓN RANDOM
+    const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
 
-        // Pintar los círculos con los colores seleccionados
-        const secretCircles = document.getElementsByClassName("secret");
-            Array.from(secretCircles).forEach((circle, index) => {
-            circle.style.backgroundColor = mezclarColores[index];
-        });
+    const coloresFinales = [];
+
+    // Pintar los círculos con los colores seleccionados
+    const secretCircles = document.getElementsByClassName("secret");
+    Array.from(secretCircles).forEach((circle, index) => {
+        circle.style.backgroundColor = mezclarColores[index];
+        coloresFinales.push(mezclarColores[index]);
+    });
+
+    console.log(coloresFinales);
 }
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // TABLERO
@@ -147,7 +153,7 @@ const rows = () => {
             newImg.addEventListener('click', rows);
 
         console.log('Clicks disponibles: ' + (nivel - contador));
-    
+        
     pintarDot1();
     }
 };
@@ -157,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.addEventListener('click', rows);
 });
 
-// PINTAR LOS DOTS DEL JUEGO CON LOS COLORES DEL ARRAY
+// PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
 
 const pintarDot1 = () => {
     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -165,20 +171,45 @@ const pintarDot1 = () => {
 
     if (coloresGuardados && coloresGuardados.length > 0) {
         Array.from(dots).forEach((dot) => {
-        let currentIndex = 0;
+        let colorIndex = 0;
         dot.addEventListener('click', () => {
-            let nextColorIndex = (currentIndex + 1) % coloresGuardados.length;
+            let nextColorIndex = (colorIndex + 1) % coloresGuardados.length;
             dot.style.backgroundColor = coloresGuardados[nextColorIndex] || "transparent";
-            currentIndex = nextColorIndex;
+            colorIndex = nextColorIndex;
+            console.log("color " + coloresGuardados[nextColorIndex]);
+            });
         });
+    }
+    arrayColoresDots();
+};
+document.addEventListener("DOMContentLoaded", pintarDot1);
+
+// ARRAY DE LOS COLORES DE LOS DOTS
+
+const arrayColoresDots = () => {
+    const coloresFinales = [];
+    const dots = document.getElementsByClassName('dot1');
+
+    let hayColor = false;
+
+    Array.from(dots).forEach((dot) => {
+        const backgroundColor = dot.style.backgroundColor;
+        if (backgroundColor !== '') {
+            hayColor = true;
+            coloresFinales.push(backgroundColor);
+        }
     });
+
+    if (hayColor) {
+        console.log(coloresFinales);
+    } else {
+        console.log('No hay dots con color.');
     }
 };
 
-document.addEventListener("DOMContentLoaded", pintarDot1);
-
-
 
 // EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
-let mensajeWinner = document.getElementById("enhorabuena");
-mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
+
+// let mensajeWinner = document.getElementById("enhorabuena");
+// mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
+

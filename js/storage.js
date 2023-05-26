@@ -16,7 +16,7 @@ const saveDif = () => {
 
 //TRAER NIVELES
 let nivel = sessionStorage.getItem("level");
-console.log("nivelFacil vale...", nivel)
+console.log("¿Qué nivel es?", nivel)
 
 
 //STORAGE JUGADOR
@@ -38,6 +38,7 @@ const saveJugador = () => {
         // }
 }
 
+
 //COLOR PICKER
 
     //Pintado de los círculos por el usuario
@@ -50,9 +51,12 @@ const colorPicker = (inputId, circleId) => {
         console.log("Color seleccionado:", colorInput.value);
     }
 }
+
 colorPicker("cp1", "circle1");
 colorPicker("cp2", "circle2");
 colorPicker("cp3", "circle3");
 colorPicker("cp4", "circle4");
 colorPicker("cp5", "circle5");
 colorPicker("cp6", "circle6");
+
+
