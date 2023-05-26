@@ -29,45 +29,53 @@ const botonComenzar = document.querySelector(".btn-cp");
 
 //RECUPERACIÓN DE COLORES DE SESSION STORAGE
 
-const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
+let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
 
     document.addEventListener("DOMContentLoaded", () => {
     const circles = document.querySelectorAll(".userColors");
         // console.log(coloresGuardados);
     if (sessionStorage.getItem("seleccionColores")) {
-        const coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
+        coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
         
         circles.forEach((circle, index) => {
         circle.style.backgroundColor = coloresGuardados[index] || "transparent";
         });
     }
+
 });
 
 //OBTENCIÓN DE COMBINACIÓN RANDOM SECRETA
 
+
 const recuperacionColores = JSON.parse(sessionStorage.getItem("seleccionColores"));
-
+const coloresFinales = [];
 // Deben haber mínimo cuatro colores seleccionados
-if (recuperacionColores.length < 4) {
-    console.log("No hay suficientes colores almacenados");
-} else {
-    // OBTENCIÓN DE COMBINACIÓN RANDOM
-    const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
+    if (recuperacionColores.length < 4) {
+        console.log("No hay suficientes colores almacenados");
+    } else {
+        // OBTENCIÓN DE COMBINACIÓN RANDOM
+        const mezclarColores = recuperacionColores.sort(() => Math.random() - 0.5).slice(0, 4);
 
-    const coloresFinales = [];
+        // const coloresFinales = [];
 
-    // Pintar los círculos con los colores seleccionados
-    const secretCircles = document.getElementsByClassName("secret");
-    Array.from(secretCircles).forEach((circle, index) => {
-        circle.style.backgroundColor = mezclarColores[index];
-        coloresFinales.push(mezclarColores[index]);
-    });
+        // Pintar los círculos con los colores seleccionados
+        const secretCircles = document.getElementsByClassName("secret");
+        Array.from(secretCircles).forEach((circle, index) => {
+            circle.style.backgroundColor = mezclarColores[index];
+            coloresFinales.push(mezclarColores[index]);
+        });
 
-    console.log(coloresFinales);
-}
+        console.log(coloresFinales);
+    }
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // TABLERO
+
+
+
+
+
 
 // FILA PRINCIPAL TABLERO
 
@@ -96,7 +104,7 @@ let innerAnswerDiv = document.createElement('div');
 
     for (let i = 0; i < 4; i++) {
         let dotADiv = document.createElement('div');
-            dotADiv.className = 'dotA m-1';
+            dotADiv.className = 'dotA';
             innerAnswerDiv.appendChild(dotADiv);
     }
 
@@ -128,6 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 //FUNCIÓN SUMA DE FILAS POR NIVEL
 
@@ -163,6 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
         img.addEventListener('click', rows);
 });
 
+
+
+
+
+
+
 // PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
 
 const pintarDot1 = () => {
@@ -181,13 +199,20 @@ const pintarDot1 = () => {
         });
     }
     arrayColoresDots();
+    
+
 };
 document.addEventListener("DOMContentLoaded", pintarDot1);
+
+
+
+
+
 
 // ARRAY DE LOS COLORES DE LOS DOTS
 
 const arrayColoresDots = () => {
-    const coloresFinales = [];
+    coloresGuardados = [];
     const dots = document.getElementsByClassName('dot1');
 
     let hayColor = false;
@@ -196,17 +221,59 @@ const arrayColoresDots = () => {
         const backgroundColor = dot.style.backgroundColor;
         if (backgroundColor !== '') {
             hayColor = true;
-            coloresFinales.push(backgroundColor);
+            coloresGuardados.push(backgroundColor);
         }
     });
 
     if (hayColor) {
-        console.log(coloresFinales);
+        console.log(coloresGuardados);
     } else {
         console.log('No hay dots con color.');
     }
 };
 
+//COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
+
+///////////////////SOCORROOOOOOO//////////////////////////
+const compareColours = () => {
+
+    if (coloresGuardados.length >= 4){
+        const compareArrays = coloresGuardados.map((element, index) => {
+            console.log(compareArrays = coloresGuardados.map((element, index)));
+            if (element === coloresFinales[index]) {
+                return "rgb(255, 0, 0)";
+            } else if (coloresFinales.includes(element)){
+                return "rgb(0, 0, 0)";
+            } else {
+                return "";
+            }
+        });
+    } 
+}
+document.addEventListener("DOMContentLoaded", compareColours);
+
+// //PINTAR LOS DOTS ANSWER 
+// const pintarDotA = () => {
+
+//     for (let i = 0; i < 4; i++) {
+//         let paintDotA = document.getElementsByClassName('dotA');
+//         let paintAnswer = compareArrays[i];
+//         paintDotA.style.backgroundColor = paintAnswer;
+//     }
+// }
+// document.addEventListener("DOMContentLoaded", pintarDotA);
+
+//PINTAR LOS DOTS ANSWER 
+// const pintarDotA = () => {
+
+//     for (let i = 0; i < 4; i++) {
+//         let paintDotA = document.getElementsByClassName('dotA');
+//         let paintAnswer = compareArrays[i];
+//         paintDotA.style.backgroundColor = paintAnswer;
+//     }
+// }
+// document.addEventListener("DOMContentLoaded", pintarDotA);
+  
 
 // EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
 
