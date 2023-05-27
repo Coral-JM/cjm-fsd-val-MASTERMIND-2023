@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
 const compareColours = (coloresArray) => {
-    
     console.log("estoy aqui");
     console.log(coloresArray);
     if (coloresArray.length <= 4) {
@@ -152,8 +151,10 @@ const compareColours = (coloresArray) => {
           }
         })
       };
-      
+      //NO SE APLICA A CADA UNA DE LAS ROWS
+      //SI ACIERTAS LA ROW SIGUEN CREANDOSE FILAS
     }
+
 
 
 //FUNCIÓN SUMA DE FILAS POR NIVEL
@@ -185,7 +186,6 @@ const rows = () => {
             pintarDot1();
         }
     }
-
 document.addEventListener('DOMContentLoaded', () => {
     let img = document.querySelector('.check img');
         img.addEventListener('click', rows);
