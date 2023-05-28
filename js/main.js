@@ -77,6 +77,7 @@ const coloresFinales = [];
 createRow = () => {
 let rowDiv = document.createElement('div');
     rowDiv.className = 'row rowprincipal';
+    rowDiv.id = 'row rowprincipal';
 let colDiv = document.createElement('div');
     colDiv.className = 'col-10 p-2 line';
 let innerDiv = document.createElement('div');
@@ -101,7 +102,9 @@ let innerAnswerDiv = document.createElement('div');
         let dotADiv = document.createElement('div');
             dotADiv.className = 'dotA';
             innerAnswerDiv.appendChild(dotADiv);
+            dotADiv.id = 'dotA';
     }
+    
 
     answerDiv.appendChild(innerAnswerDiv);
     innerDiv.appendChild(answerDiv);
@@ -132,136 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
-
-// const compareColours = (coloresArray) => {
-//     console.log("estoy aqui");
-//     console.log(coloresArray);
-//     if (coloresArray.length <= 4) {
-//       console.log("entra");
-
-//       coloresArray.forEach((element, index) => {
-
-//           if (element === coloresFinales[index]) {
-//             console.log("rgb(255, 0, 0)");
-//           } else if (coloresFinales.includes(element)) {
-//             console.log("rgb(0, 0, 0)");
-//           } else {
-//             console.log("");
-//           }
-//         })
-//       };
-//     }
-
-    
-// //FUNCIÓN SUMA DE FILAS POR NIVEL
-
-// let contador = 1;
-
-// const rows = () => {
-    
-//     let checkDivs = document.querySelectorAll('.check');
-//     let lastCheckDiv = checkDivs[checkDivs.length - 1];
-//     let lastImg = lastCheckDiv.querySelector('img');
-
-//     if (contador < nivel && lastImg && contador === checkDivs.length) {
-//         lastImg.removeEventListener('click', rows);
-    
-//             let juegoDiv = document.getElementById('juego');
-//             let newRow = createRow();
-//             juegoDiv.appendChild(newRow);
-      
-//             contador++;
-      
-//             let newCheckDiv = newRow.querySelector('.check');
-//             let newImg = newCheckDiv.querySelector('img');
-//             newImg.addEventListener('click', rows);
-      
-//             console.log('Clicks disponibles: ' + (nivel - contador));
-      
-//             pintarDot1();
-//         }
-//     }
-// document.addEventListener('DOMContentLoaded', () => {
-//     let img = document.querySelector('.check img');
-//     img.addEventListener('click', rows);
-// });
-
-//  //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
-
-// const pintarDot1 = () => {
-//     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
-//     let dots = document.getElementsByClassName('dot1');
-
-//     if (coloresGuardados && coloresGuardados.length > 0) {
-//         Array.from(dots).forEach((dot) => {
-//         let colorIndex = 0;
-//         dot.addEventListener('click', () => {
-//             let nextColorIndex = (colorIndex + 1) % coloresGuardados.length;
-//             dot.style.backgroundColor = coloresGuardados[nextColorIndex] || "transparent";
-//             colorIndex = nextColorIndex;
-//             console.log("color " + coloresGuardados[nextColorIndex]);
-//             });
-//         });
-//     }
-// };
-
-// document.addEventListener("DOMContentLoaded", pintarDot1);
-
-
-// // // ARRAY DE LOS COLORES DE LOS DOTS
-
-// const arrayColoresDots = () => {
-//     const dots = document.getElementsByClassName('dot1');
-
-//     let coloresArray = [];
-
-//     let hayColor = false;
-
-//     Array.from(dots).forEach((dot) => {
-//         const backgroundColor = dot.style.backgroundColor;
-//         if (backgroundColor !== '') {
-//             hayColor = true;
-//             coloresArray.push(backgroundColor);
-//         }
-//     });
-
-//     if (hayColor) {
-//         console.log(coloresArray);
-//         compareColours(coloresArray); 
-//     } else {
-//         console.log('No hay dots con color.');
-//     }
-// };
-// document.addEventListener('DOMContentLoaded', () => {
-//     let img = document.querySelector('.check img');
-//     img.addEventListener('click', arrayColoresDots);
-//   });
-
-
-
-// //PINTAR LOS DOTS ANSWER 
-// const pintarDotA = () => {
-
-//     for (let i = 0; i < 4; i++) {
-//         let paintDotA = document.getElementsByClassName('dotA');
-//         let paintAnswer = compareArrays[i];
-//         paintDotA.style.backgroundColor = paintAnswer;
-//     }
-// }
-// document.addEventListener("DOMContentLoaded", pintarDotA);
-
-
-  
-
-// EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
-
-// let mensajeWinner = document.getElementById("enhorabuena");
-// mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //  //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
+//PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
 
 const pintarDot1 = () => {
     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -280,10 +154,10 @@ const pintarDot1 = () => {
     }
     arrayColoresDots();
 };
-
 document.addEventListener("DOMContentLoaded", pintarDot1);
 
-// // // ARRAY DE LOS COLORES DE LOS DOTS
+
+// ARRAY DE LOS COLORES DE LOS DOTS
 
 const arrayColoresDots = () => {
     const dots = document.getElementsByClassName('dot1');
@@ -318,52 +192,62 @@ document.addEventListener('DOMContentLoaded', () => {
 // COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
 const compareColours = (coloresArray) => {
-    // console.log("estoy aqui");
-    console.log(coloresArray);
+    const dotsAnswer = document.getElementsByClassName('dotA');
+
     if (coloresArray.length <= 4) {
-      console.log("entra");
-
-      coloresArray.forEach((element, index) => {
-
-          if (element === coloresFinales[index]) {
+        coloresArray.forEach((element, index) => {
+        if (element === coloresFinales[index]) {
             console.log("rgb(255, 0, 0)");
-          } else if (coloresFinales.includes(element)) {
+            dotsAnswer[index].style.backgroundColor = "rgb(255, 0, 0)";
+        } else if (coloresFinales.includes(element)) {
             console.log("rgb(0, 0, 0)");
-          } else {
+            dotsAnswer[index].style.backgroundColor = "rgb(0, 0, 0)";
+        } else {
             console.log("");
-          }
-        })
-      };
+            dotsAnswer[index].style.backgroundColor = "";
+        }
+      });
     }
-// //FUNCIÓN SUMA DE FILAS POR NIVEL
+  };
 
-    let contador = 1;
-    const rows = () => {
+    //FUNCIÓN SUMA DE FILAS POR NIVEL
+
+let contador = 1;
+
+const rows = () => {
+
+    let checkDivs = document.querySelectorAll('.check');
+    let lastCheckDiv = checkDivs[checkDivs.length - 1];
+    let lastImg = lastCheckDiv.querySelector('img');
+
+        if (contador < nivel && lastImg && contador === checkDivs.length) {
+        lastImg.removeEventListener('click', rows);
     
-            let checkDivs = document.querySelectorAll('.check');
-            let lastCheckDiv = checkDivs[checkDivs.length - 1];
-            let lastImg = lastCheckDiv.querySelector('img');
-        
-            if (contador < nivel && lastImg && contador === checkDivs.length) {
-                lastImg.removeEventListener('click', rows);
+            let juegoDiv = document.getElementById('juego');
+            let newRow = createRow();
+            juegoDiv.appendChild(newRow);
+      
+            contador++;
+      
+            let newCheckDiv = newRow.querySelector('.check');
+            let newImg = newCheckDiv.querySelector('img');
+            newImg.addEventListener('click', rows);
+      
+            console.log('Clicks disponibles: ' + (nivel - contador));
             
-                    let juegoDiv = document.getElementById('juego');
-                    let newRow = createRow();
-                    juegoDiv.appendChild(newRow);
-              
-                    contador++;
-              
-                    let newCheckDiv = newRow.querySelector('.check');
-                    let newImg = newCheckDiv.querySelector('img');
-                    newImg.addEventListener('click', rows);
-              
-                    console.log('Clicks disponibles: ' + (nivel - contador));
-              
-                    pintarDot1();
-                }
-            }
-        document.addEventListener('DOMContentLoaded', () => {
-            let img = document.querySelector('.check img');
-            img.addEventListener('click', rows);
+            pintarDot1();
+          };
+    }
 
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+        let img = document.querySelector('.check img');
+        img.addEventListener('click', rows);
+      });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
+
+let mensajeWinner = document.getElementById("enhorabuena");
+mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
