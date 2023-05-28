@@ -1,5 +1,32 @@
 
 
+
+// ALMACENAJE DE LOS COLORES DEL USUARIO
+const almacenarColores = () => {
+    const circles = document.getElementsByClassName("circle-cp");
+    const seleccionColores = [];
+
+    Array.from(circles).forEach(circle => {
+        const color = circle.style.backgroundColor;
+        seleccionColores.push(color);
+    });
+
+    sessionStorage.setItem("seleccionColores", JSON.stringify(seleccionColores));
+
+    console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
+};
+
+//Carga los elementos una vez abierta la página
+window.addEventListener("DOMContentLoaded", () => {
+//Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
+const botonComenzar = document.querySelector(".btn-cp");
+
+    //Evento de click al botón para almacenar los colores
+    if (botonComenzar) {
+        botonComenzar.addEventListener("click", almacenarColores);
+    }
+});
+
 //RECUPERACIÓN DE COLORES DE SESSION STORAGE
 
 let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -107,65 +134,134 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
-const compareColours = (coloresArray) => {
-    console.log("estoy aqui");
-    console.log(coloresArray);
-    if (coloresArray.length <= 4) {
-      console.log("entra");
+// const compareColours = (coloresArray) => {
+//     console.log("estoy aqui");
+//     console.log(coloresArray);
+//     if (coloresArray.length <= 4) {
+//       console.log("entra");
 
-      coloresArray.forEach((element, index) => {
+//       coloresArray.forEach((element, index) => {
 
-          if (element === coloresFinales[index]) {
-            console.log("rgb(255, 0, 0)");
-          } else if (coloresFinales.includes(element)) {
-            console.log("rgb(0, 0, 0)");
-          } else {
-            console.log("");
-          }
-        })
-      };
-      //NO SE APLICA A CADA UNA DE LAS ROWS
-      //SI ACIERTAS LA ROW SIGUEN CREANDOSE FILAS
-    }
+//           if (element === coloresFinales[index]) {
+//             console.log("rgb(255, 0, 0)");
+//           } else if (coloresFinales.includes(element)) {
+//             console.log("rgb(0, 0, 0)");
+//           } else {
+//             console.log("");
+//           }
+//         })
+//       };
+//     }
 
-
-
-//FUNCIÓN SUMA DE FILAS POR NIVEL
-
-let contador = 1;
-
-
-const rows = () => {
     
-    let checkDivs = document.querySelectorAll('.check');
-    let lastCheckDiv = checkDivs[checkDivs.length - 1];
-    let lastImg = lastCheckDiv.querySelector('img');
+// //FUNCIÓN SUMA DE FILAS POR NIVEL
 
-    if (contador < nivel && lastImg && contador === checkDivs.length) {
-        lastImg.removeEventListener('click', rows);
+// let contador = 1;
+
+// const rows = () => {
     
-            let juegoDiv = document.getElementById('juego');
-            let newRow = createRow();
-            juegoDiv.appendChild(newRow);
+//     let checkDivs = document.querySelectorAll('.check');
+//     let lastCheckDiv = checkDivs[checkDivs.length - 1];
+//     let lastImg = lastCheckDiv.querySelector('img');
+
+//     if (contador < nivel && lastImg && contador === checkDivs.length) {
+//         lastImg.removeEventListener('click', rows);
+    
+//             let juegoDiv = document.getElementById('juego');
+//             let newRow = createRow();
+//             juegoDiv.appendChild(newRow);
       
-            contador++;
+//             contador++;
       
-            let newCheckDiv = newRow.querySelector('.check');
-            let newImg = newCheckDiv.querySelector('img');
-            newImg.addEventListener('click', rows);
+//             let newCheckDiv = newRow.querySelector('.check');
+//             let newImg = newCheckDiv.querySelector('img');
+//             newImg.addEventListener('click', rows);
       
-            console.log('Clicks disponibles: ' + (nivel - contador));
+//             console.log('Clicks disponibles: ' + (nivel - contador));
       
-            pintarDot1();
-        }
-    }
-document.addEventListener('DOMContentLoaded', () => {
-    let img = document.querySelector('.check img');
-        img.addEventListener('click', rows);
-});
+//             pintarDot1();
+//         }
+//     }
+// document.addEventListener('DOMContentLoaded', () => {
+//     let img = document.querySelector('.check img');
+//     img.addEventListener('click', rows);
+// });
+
+//  //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
+
+// const pintarDot1 = () => {
+//     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
+//     let dots = document.getElementsByClassName('dot1');
+
+//     if (coloresGuardados && coloresGuardados.length > 0) {
+//         Array.from(dots).forEach((dot) => {
+//         let colorIndex = 0;
+//         dot.addEventListener('click', () => {
+//             let nextColorIndex = (colorIndex + 1) % coloresGuardados.length;
+//             dot.style.backgroundColor = coloresGuardados[nextColorIndex] || "transparent";
+//             colorIndex = nextColorIndex;
+//             console.log("color " + coloresGuardados[nextColorIndex]);
+//             });
+//         });
+//     }
+// };
+
+// document.addEventListener("DOMContentLoaded", pintarDot1);
 
 
- //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
+// // // ARRAY DE LOS COLORES DE LOS DOTS
+
+// const arrayColoresDots = () => {
+//     const dots = document.getElementsByClassName('dot1');
+
+//     let coloresArray = [];
+
+//     let hayColor = false;
+
+//     Array.from(dots).forEach((dot) => {
+//         const backgroundColor = dot.style.backgroundColor;
+//         if (backgroundColor !== '') {
+//             hayColor = true;
+//             coloresArray.push(backgroundColor);
+//         }
+//     });
+
+//     if (hayColor) {
+//         console.log(coloresArray);
+//         compareColours(coloresArray); 
+//     } else {
+//         console.log('No hay dots con color.');
+//     }
+// };
+// document.addEventListener('DOMContentLoaded', () => {
+//     let img = document.querySelector('.check img');
+//     img.addEventListener('click', arrayColoresDots);
+//   });
+
+
+
+// //PINTAR LOS DOTS ANSWER 
+// const pintarDotA = () => {
+
+//     for (let i = 0; i < 4; i++) {
+//         let paintDotA = document.getElementsByClassName('dotA');
+//         let paintAnswer = compareArrays[i];
+//         paintDotA.style.backgroundColor = paintAnswer;
+//     }
+// }
+// document.addEventListener("DOMContentLoaded", pintarDotA);
+
+
+  
+
+// EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
+
+// let mensajeWinner = document.getElementById("enhorabuena");
+// mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //  //PINTAR LOS DOTS DEL JUEGO CON EL INDEX DE COLORES DEL ARRAY
 
 const pintarDot1 = () => {
     let coloresGuardados = JSON.parse(sessionStorage.getItem("seleccionColores"));
@@ -182,11 +278,12 @@ const pintarDot1 = () => {
             });
         });
     }
+    arrayColoresDots();
 };
+
 document.addEventListener("DOMContentLoaded", pintarDot1);
 
-
-// ARRAY DE LOS COLORES DE LOS DOTS
+// // // ARRAY DE LOS COLORES DE LOS DOTS
 
 const arrayColoresDots = () => {
     const dots = document.getElementsByClassName('dot1');
@@ -202,28 +299,71 @@ const arrayColoresDots = () => {
             coloresArray.push(backgroundColor);
         }
     });
-
+    if (coloresArray.length > 4) {
+        coloresArray = coloresArray.splice(coloresArray.length - 4);
+      }
     if (hayColor) {
-        console.log(coloresArray);
-        compareColours(coloresArray); 
+        // console.log(coloresArray);
+        compareColours(coloresArray);
     } else {
         console.log('No hay dots con color.');
     }
 };
 document.addEventListener('DOMContentLoaded', () => {
     let img = document.querySelector('.check img');
-    img.addEventListener('click', arrayColoresDots); 
+    img.addEventListener('click', arrayColoresDots);
   });
 
 
-// //PINTAR LOS DOTS ANSWER 
-// const pintarDotA = () => {
+// COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
-//     for (let i = 0; i < 4; i++) {
-//         let paintDotA = document.getElementsByClassName('dotA');
-//         let paintAnswer = compareArrays[i];
-//         paintDotA.style.backgroundColor = paintAnswer;
-//     }
-// }
-// document.addEventListener("DOMContentLoaded", pintarDotA);
+const compareColours = (coloresArray) => {
+    // console.log("estoy aqui");
+    console.log(coloresArray);
+    if (coloresArray.length <= 4) {
+      console.log("entra");
 
+      coloresArray.forEach((element, index) => {
+
+          if (element === coloresFinales[index]) {
+            console.log("rgb(255, 0, 0)");
+          } else if (coloresFinales.includes(element)) {
+            console.log("rgb(0, 0, 0)");
+          } else {
+            console.log("");
+          }
+        })
+      };
+    }
+// //FUNCIÓN SUMA DE FILAS POR NIVEL
+
+    let contador = 1;
+    const rows = () => {
+    
+            let checkDivs = document.querySelectorAll('.check');
+            let lastCheckDiv = checkDivs[checkDivs.length - 1];
+            let lastImg = lastCheckDiv.querySelector('img');
+        
+            if (contador < nivel && lastImg && contador === checkDivs.length) {
+                lastImg.removeEventListener('click', rows);
+            
+                    let juegoDiv = document.getElementById('juego');
+                    let newRow = createRow();
+                    juegoDiv.appendChild(newRow);
+              
+                    contador++;
+              
+                    let newCheckDiv = newRow.querySelector('.check');
+                    let newImg = newCheckDiv.querySelector('img');
+                    newImg.addEventListener('click', rows);
+              
+                    console.log('Clicks disponibles: ' + (nivel - contador));
+              
+                    pintarDot1();
+                }
+            }
+        document.addEventListener('DOMContentLoaded', () => {
+            let img = document.querySelector('.check img');
+            img.addEventListener('click', rows);
+
+        });
