@@ -1,8 +1,8 @@
 ### MASTERMIND
 
 **Índice**
-- [Proyecto 👾](#qué-es)
-- [Master Mind ](#master-mind)
+- [Proyecto 🧩](#qué-es)
+- [Master Mind 👾](#master-mind)
 - [Construcción 🌱](#construcción)
 - [Sección de errores 💣](#sección-de-errores)
 - [Tecnologías ⚙️](#tecnologías)
@@ -17,13 +17,8 @@ El reto principal ha sido crear toda la lógica del juego desde cero, éste deb�
 ---
 
 ### Master Mind
-![alt text](/img/Captura%20de%20pantalla%20(14).png)
-![alt text](/img/Captura%20de%20pantalla%20(15).png)
-![alt text](/img/Captura%20de%20pantalla%20(16).png)
-![alt text](/img/Captura%20de%20pantalla%20(17).png)
-![alt text](/img/Captura%20de%20pantalla%20(18).png)
-![alt text](/img/Captura%20de%20pantalla%20(19).png)
-![alt text](/img/Captura%20de%20pantalla%20(20).png)
+![alt text](/img/master.jpg)
+
 
 
 ---
