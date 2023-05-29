@@ -119,8 +119,14 @@ input[type="color"] {
     border-radius: 50%;
     border: solid black;
     margin: 0.5em;
+    display: none;
 }
 
+.secretLine {
+    border: solid black 0.1em;
+    border-radius: 1em;
+    display: none;
+}
 /*ROW*/
 .line {
     border: solid black 0.1em;
