@@ -54,4 +54,4 @@ Aún está en construcción.
 ---
 ### Créditos
 
-Este proyecto ha sido realizado por Coral Jiménez, estudiante de GeeksHubs Academy en la promoción de primavera del 2023. 
+Este proyecto ha sido realizado por Coral Jiménez, estudiante de GeeksHubs Academy en la promoción de primavera del 2023, pero no hubiera sido posible sin la gran ayuda de mis compañeros. Especialmente Edu, Judit y Andrea. 
