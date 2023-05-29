@@ -32,9 +32,7 @@ Por último una vez hayas ganado el juego tendrás una pantalla final dónde apa
 ---
 ### Sección de errores
 
-En este proyecto me he encontrado con muchas dificultades. Generar la lógica del juego, su orden de código para que nada se solapase. Solo el hecho de generar las funciones ha sido bastante complicado ya que era la primera vez que me enfrentaba a aplicar javascript a un proyecto que necesitase. 
-
-Aún está en construcción. 
+En este proyecto me he encontrado con muchas dificultades. Generar la lógica del juego, el orden del código para que nada se solapase. Solo el hecho de generar las funciones ha sido bastante complicado ya que era la primera vez que me enfrentaba a javascript. Ha sido una montaña rusa, algunas funciones que creía que iban a requerir más tiempo las he resuelto con soltura y otras que imaginaba más fáciles he podido estar hasta tres días para solventarlas. El proyecto se ha roto una media de 17 veces por día y aunque ha habido momentos en los que creía que no iba a lograrlo, aquí está. Puede que algo simple a primera vista, pero desde luego ha sido un proyecto en el que me he tenido que enfrentar a la frustración diaria de intentar una y otra vez de varias formas distintas la aplicación de una lógica que hasta ahora no había aplicado nunca. 
 
 ---
 
