@@ -1,4 +1,28 @@
-
+// ALMACENAJE DE LOS COLORES DEL USUARIO
+const almacenarColores = () => {
+    const circles = document.getElementsByClassName("circle-cp");
+    const seleccionColores = [];
+  
+    Array.from(circles).forEach(circle => {
+        const color = circle.style.backgroundColor;
+        seleccionColores.push(color);
+    });
+  
+    sessionStorage.setItem("seleccionColores", JSON.stringify(seleccionColores));
+  
+    console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
+  };
+  
+  //Carga los elementos una vez abierta la página
+  window.addEventListener("DOMContentLoaded", () => {
+  //Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
+  const botonComenzar = document.querySelector(".btn-cp");
+  
+    //Evento de click al botón para almacenar los colores
+    if (botonComenzar) {
+        botonComenzar.addEventListener("click", almacenarColores);
+    }
+  });
 
 //RECUPERACIÓN DE COLORES DE SESSION STORAGE
 
@@ -75,7 +99,6 @@ let innerAnswerDiv = document.createElement('div');
         let dotADiv = document.createElement('div');
             dotADiv.className = 'dotA';
             innerAnswerDiv.appendChild(dotADiv);
-            dotADiv.id = 'dotA';
     }
     
 
