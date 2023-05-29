@@ -27,21 +27,15 @@ const saveJugador = () => {
 
     sessionStorage.setItem("usuario", jugador);
     window.location.href = "../pages/winner.html";
+    window.location.href = "../pages/looser.html";
 
-    
-        // if (jugador.length !== 0) {
-        // sessionStorage.setItem("usuario", jugador);
 
-        // window.location.href = "../pages/winner.html";
-        // } else {
-        //     alert("Introduce un nombre");
-        // }
 }
 
 
 //COLOR PICKER
 
-    //Pintado de los círculos por el usuario
+//Pintado de los círculos por el usuario
 const colorPicker = (inputId, circleId) => {
     let colorInput = document.getElementById(inputId);
     let circle = document.getElementById(circleId);

@@ -12,8 +12,7 @@ const almacenarColores = () => {
   
     console.log(JSON.parse(sessionStorage.getItem("seleccionColores")));
   };
-  
-  //Carga los elementos una vez abierta la página
+
   window.addEventListener("DOMContentLoaded", () => {
   //Almacenaje de los colores escogidos por el usuario al apretar COMENZAR (solo guarda los colores de los círculos, no los del input color)
   const botonComenzar = document.querySelector(".btn-cp");
@@ -183,20 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', arrayColoresDots);
   });
 
+
+
+
 // COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
 const compareColours = (coloresArray) => {
-    // const dotsAnswer = document.getElementsByClassName('dotA');
     const dotsAnswer = document.querySelectorAll(`#row${currentRow - 2} .dotA`);
     console.log(dotsAnswer)
-    // const dotsAnswerArray = Array.from(dotsAnswer)
-    // console.log(dotsAnswerArray)
 
     if (coloresArray.length <= 4) {
         coloresArray.forEach((element, index) => {
         if (element === coloresFinales[index]) {
             console.log("rgb(255, 0, 0)");
             dotsAnswer[index].style.backgroundColor = "rgb(255, 0, 0)";
+            if (dotsAnswer.length === 4 && Array.from(dotsAnswer).every(dot => dot.style.backgroundColor === 'rgb(255, 0, 0)')) {
+                window.location.href = './winner.html';
+                }
         } else if (coloresFinales.includes(element)) {
             console.log("rgb(0, 0, 0)");
             dotsAnswer[index].style.backgroundColor = "rgb(0, 0, 0)";
@@ -209,9 +211,14 @@ const compareColours = (coloresArray) => {
   };
 
 
+
 //FUNCIÓN SUMA DE FILAS POR NIVEL
 
 let contador = 1;
+
+const redirectToPage = () => {
+    window.location.href = './looser.html';
+  };
 
 const rows = () => {
 
@@ -235,7 +242,9 @@ const rows = () => {
             console.log('Clicks disponibles: ' + (nivel - contador));
             
             pintarDot1();
-          };
+          } else if (contador >= nivel) {
+            redirectToPage();
+          }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -244,10 +253,21 @@ const rows = () => {
 
       });
 
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // EXPOSICIÓN DEL JUGADOR EN LA PÁGINA WINNER
 
 let mensajeWinner = document.getElementById("enhorabuena");
 mensajeWinner.innerHTML = `${sessionStorage.getItem("usuario")}!`;
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
