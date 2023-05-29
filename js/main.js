@@ -68,13 +68,12 @@ const coloresFinales = [];
 
 // TABLERO
 
-
 // FILA PRINCIPAL TABLERO
-
+let currentRow = 0;
 createRow = () => {
 let rowDiv = document.createElement('div');
     rowDiv.className = 'row rowprincipal';
-    rowDiv.id = 'row rowprincipal';
+    rowDiv.id = 'row' + currentRow;
 let colDiv = document.createElement('div');
     colDiv.className = 'col-10 p-2 line';
 let innerDiv = document.createElement('div');
@@ -101,7 +100,7 @@ let innerAnswerDiv = document.createElement('div');
             innerAnswerDiv.appendChild(dotADiv);
     }
     
-
+    currentRow += 1;
     answerDiv.appendChild(innerAnswerDiv);
     innerDiv.appendChild(answerDiv);
     colDiv.appendChild(innerDiv);
@@ -119,7 +118,6 @@ let img = document.createElement('img');
     checkDiv.appendChild(img);
     colDiv2.appendChild(checkDiv);
     rowDiv.appendChild(colDiv2);
-
     return rowDiv;
 }
 
@@ -171,9 +169,10 @@ const arrayColoresDots = () => {
     });
     if (coloresArray.length > 4) {
         coloresArray = coloresArray.splice(coloresArray.length - 4);
-      }
+    }
+      
     if (hayColor) {
-        // console.log(coloresArray);
+        console.log(coloresArray);
         compareColours(coloresArray);
     } else {
         console.log('No hay dots con color.');
@@ -184,11 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', arrayColoresDots);
   });
 
-
 // COMPARACIÓN DE ARRAYS RANDOM Y ARRAYS USER
 
 const compareColours = (coloresArray) => {
-    const dotsAnswer = document.getElementsByClassName('dotA');
+    // const dotsAnswer = document.getElementsByClassName('dotA');
+    const dotsAnswer = document.querySelectorAll(`#row${currentRow - 2} .dotA`);
+    console.log(dotsAnswer)
+    // const dotsAnswerArray = Array.from(dotsAnswer)
+    // console.log(dotsAnswerArray)
 
     if (coloresArray.length <= 4) {
         coloresArray.forEach((element, index) => {
@@ -206,7 +208,8 @@ const compareColours = (coloresArray) => {
     }
   };
 
-    //FUNCIÓN SUMA DE FILAS POR NIVEL
+
+//FUNCIÓN SUMA DE FILAS POR NIVEL
 
 let contador = 1;
 
@@ -238,6 +241,7 @@ const rows = () => {
     document.addEventListener('DOMContentLoaded', () => {
         let img = document.querySelector('.check img');
         img.addEventListener('click', rows);
+
       });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
