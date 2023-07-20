@@ -12,7 +12,7 @@
 ### Proyecto
 
 El tercer proyecto realizado para el curso Full Stack developer de Geekshubs Academy.
-El reto principal ha sido crear toda la lógica del juego desde cero, éste debía de ser dinámico y que su tablero de juego pudiera adaptarse a los distintos niveles en los que se podía jugar, creando el número de filas necesarias por nivel, pudiendo cada una de éstas filas adquirir todos los colores que el usuario elijiera para jugar, generando la lógica desde Javascript para que el tablero fuera capaz de analizar y comparar cada fila con la respuesta ganadora. Además de crear un diseño que fuera totalmente responsive. Si quieres echar un vistazo, dále al siguiente enlace: [MASTERMIND](https://coral-jm.github.io/cjm-fsd-val-MASTERMIND-2023/)
+El reto principal ha sido crear toda la lógica del juego desde cero, éste debía de ser dinámico y que su tablero de juego pudiera adaptarse a los distintos niveles en los que se podía jugar, creando el número de filas necesarias por nivel, pudiendo cada una de éstas filas adquirir todos los colores que el usuario eligiera para jugar, generando la lógica desde Javascript para que el tablero fuera capaz de analizar y comparar cada fila con la respuesta ganadora. Además de crear un diseño que fuera totalmente responsive. Si quieres echar un vistazo, dále al siguiente enlace: [MASTERMIND](https://coral-jm.github.io/cjm-fsd-val-MASTERMIND-2023/)
 
 ---
 
